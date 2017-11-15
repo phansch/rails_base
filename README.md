@@ -7,9 +7,10 @@
 
 To create a new Rails project, you have to follow a few steps.
 
-1. Run `bin/install_base` and provide the new project name
-4. Update `config/locales/en.yml` for development URLs
+0. `git clone https://github.com/phansch/.git new_project && cd new_project` Where `new_project` is the name of your project.
+1. Run `bin/install_base`
 3. Run `bin/setup`
+4. Update `config/locales/en.yml` for development URLs
 5. Remove this part of the README
 
 

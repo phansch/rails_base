@@ -1,19 +1,38 @@
 #!/usr/bin/env ruby
 
+require 'pathname'
+
 def prompt(*args)
   print(*args)
-  gets
+  gets.chomp
 end
 
-lowercase_name = prompt("Please provide the name of the new project in lower case letters, like 'kitchen_sink'. \nThis script assumes you use this name as a GitHub repo name, too.\n=> snake_case project name: ").chomp
-words = lowercase_name.split('_')
+def ask(*args)
+  print(*args)
+  gets.chomp
+end
+
+project_dir = Pathname.new(File.expand_path(__dir__)).parent
+fallback_name = project_dir.basename.to_s
+
+lowercase_name = prompt("Please provide the name of the new project in lower case letters, like 'kitchen_sink'. \nThis script assumes you use this name as a GitHub repo name, too.\n=> snake_case project name (press Enter for '#{fallback_name}': ")
+
+name = lowercase_name.empty? ? fallback_name : lowercase_name
+words = name.split('_')
 camel_case_name = words.map(&:capitalize).join
 human_name = words.map(&:capitalize).join(' ')
 
+answer = ask "Do you want to remove the .git directory of #{project_dir} for a fresh commit history? (y/n): "
+if answer == 'y'
+  `cd #{project_dir} && rm -rfI .git`
+else
+  puts 'Not removing .git directory.'
+end
+
 targets = 'app config lib spec README.md package.json'
 
-puts "... Replacing 'rails_base' with '#{lowercase_name}'"
-`find #{targets} -type f -print -exec sed -i 's/rails_base/#{lowercase_name}/g' {} \\;`
+puts "... Replacing 'rails_base' with '#{name}'"
+`find #{targets} -type f -print -exec sed -i 's/rails_base/#{name}/g' {} \\;`
 puts "... Replacing 'RailsBase' with '#{camel_case_name}'"
 `find #{targets} -type f -print -exec sed -i 's/RailsBase/#{camel_case_name}/g' {} \\;`
 puts "... Replacing 'Rails Base' with '#{human_name}'"
