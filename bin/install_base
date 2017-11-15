@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+
+def prompt(*args)
+  print(*args)
+  gets
+end
+
+lowercase_name = prompt("Please provide the name of the new project in lower case letters, like 'kitchen_sink'. \nThis script assumes you use this name as a GitHub repo name, too.\n=> snake_case project name: ").chomp
+words = lowercase_name.split('_')
+camel_case_name = words.map(&:capitalize).join
+human_name = words.map(&:capitalize).join(' ')
+
+targets = 'app config lib spec README.md package.json'
+
+puts "... Replacing 'rails_base' with '#{lowercase_name}'"
+`find #{targets} -type f -print -exec sed -i 's/rails_base/#{lowercase_name}/g' {} \\;`
+puts "... Replacing 'RailsBase' with '#{camel_case_name}'"
+`find #{targets} -type f -print -exec sed -i 's/RailsBase/#{camel_case_name}/g' {} \\;`
+puts "... Replacing 'Rails Base' with '#{human_name}'"
+`find #{targets} -type f -print -exec sed -i 's/Rails Base/#{human_name}/g' {} \\;`

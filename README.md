@@ -3,16 +3,18 @@
 [![Build Status](https://travis-ci.org/phansch/rails_base.svg?branch=master)](https://travis-ci.org/phansch/rails_base)
 
 
-## Setup
+## Using this base template
 
 To create a new Rails project, you have to follow a few steps.
 
-1. Update the `name` in package.json.
-2. Update the class name in `config/application.rb`
-3. Grep/Ag for `rails base`, `rails_base`, and `RailsBase` and replace accordingly
-4. Update `config/locales/en.yml` for dev URLs, project title and more
+1. Run `bin/install_base` and provide the new project name
+4. Update `config/locales/en.yml` for development URLs
+3. Run `bin/setup`
 5. Remove this part of the README
-6. 
+
+
+## Setup
+
 For development and testing you will need to setup your own postgres user:
 
 
