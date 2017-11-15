@@ -1,0 +1,15 @@
+en:
+  not_authorized: You are not authorized to perform this action.
+  project_title: Rails Base
+  nav:
+    my_account: My Account
+    login: Login
+    logout: Logout
+    profile: My Profile
+    dev:
+      ci:
+        url: https://travis-ci.org/phansch/rails_base
+        title: 
+      prs:
+        url: https://github.com/phansch/rails_base/pulls
+        title:
