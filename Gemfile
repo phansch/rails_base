@@ -48,11 +48,13 @@ end
 
 group :development do
   gem 'guard-rspec', require: false
-  gem 'haml-lint', require: false
   gem 'listen', '>= 3.0.5', '< 3.2'
 
   gem 'therubyracer'
 
+  # Linters
+  gem 'bundle-audit'
+  gem 'haml-lint', require: false
   gem 'rubocop', require: false
   gem 'rubocop-rspec', require: false
 
