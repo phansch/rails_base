@@ -15,10 +15,16 @@ namespace :lint do
   task :bundle_audit do
     system('bundle audit check --update')
   end
+
+  desc 'Run brakeman'
+  task :brakeman do
+    system('bundle exec brakeman -A --no-pager')
+  end
 end
 
 task :lint do
   Rake::Task['lint:haml'].invoke
   Rake::Task['lint:rubocop'].invoke
   Rake::Task['lint:bundle_audit'].invoke
+  Rake::Task['lint:brakeman'].invoke
 end

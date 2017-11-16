@@ -53,7 +53,8 @@ group :development do
   gem 'therubyracer'
 
   # Linters
-  gem 'bundle-audit'
+  gem 'brakeman', require: false
+  gem 'bundle-audit', require: false
   gem 'haml-lint', require: false
   gem 'rubocop', require: false
   gem 'rubocop-rspec', require: false
