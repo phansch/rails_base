@@ -37,6 +37,7 @@ if ENV['RUN'] == 'test'
   build.run_job('lint:rubocop', 'bundle exec rake lint:rubocop')
   build.run_job('lint:bundle_audit', 'bundle exec rake lint:bundle_audit')
   build.run_job('lint:brakeman', 'bundle exec rake lint:brakeman')
+  system('PATH=$HOME/.local/bin:$PATH pip install --user yamllint')
   build.run_job('lint:yaml', 'bundle exec rake lint:yaml')
 end
 

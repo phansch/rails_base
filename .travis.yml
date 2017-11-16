@@ -10,7 +10,6 @@ bundler_args: '--without debug --jobs 3'
 
 before_install:
   - gem install bundler
-  - pip install yamllint
 
 rvm:
   - 2.4.1
