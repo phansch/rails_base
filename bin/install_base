@@ -24,7 +24,7 @@ human_name = words.map(&:capitalize).join(' ')
 
 answer = ask "Do you want to remove the .git directory of #{project_dir} for a fresh commit history? (y/n): "
 if answer == 'y'
-  `cd #{project_dir} && rm -rfI .git`
+  `cd #{project_dir} && rm -rfI .git && git init`
 else
   puts 'Not removing .git directory.'
 end

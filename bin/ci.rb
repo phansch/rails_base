@@ -35,6 +35,7 @@ if ENV['RUN'] == 'test'
   build.run_job('test', 'bundle exec rake spec')
   build.run_job('lint:haml', 'bundle exec rake lint:haml')
   build.run_job('lint:rubocop', 'bundle exec rake lint:rubocop')
+  build.run_job('lint:bundle_audit', 'bundle exec rake lint:bundle_audit')
 end
 
 build.handle_results

@@ -10,9 +10,15 @@ namespace :lint do
   task :rubocop do
     system('bundle exec rubocop')
   end
+
+  desc 'Run bundle audit'
+  task :bundle_audit do
+    system('bundle audit check --update')
+  end
 end
 
 task :lint do
   Rake::Task['lint:haml'].invoke
   Rake::Task['lint:rubocop'].invoke
+  Rake::Task['lint:bundle_audit'].invoke
 end
