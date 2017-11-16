@@ -1,3 +1,4 @@
+---
 en:
   not_authorized: You are not authorized to perform this action.
   project_title: Rails Base
@@ -9,7 +10,7 @@ en:
     dev:
       ci:
         url: https://travis-ci.org/phansch/rails_base
-        title: 
+        title:
       prs:
         url: https://github.com/phansch/rails_base/pulls
         title:
