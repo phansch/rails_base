@@ -31,7 +31,7 @@ def run_task(command, task)
   puts
   puts "==> Invoking 'rake #{task}'"
   puts "  > Running '#{command}'"
-  system(command)
+  exit(system(command))
 end
 
 task :lint do
