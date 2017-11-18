@@ -30,6 +30,11 @@ namespace :lint do
   task :js do |task|
     run_task('yarn run lint', task)
   end
+
+  desc 'Run scss linting'
+  task :scss do |task|
+    run_task('yarn run sass-lint', task)
+  end
 end
 
 def run_task(command, task)
@@ -46,4 +51,5 @@ task :lint do
   Rake::Task['lint:brakeman'].invoke
   Rake::Task['lint:yaml'].invoke
   Rake::Task['lint:js'].invoke
+  Rake::Task['lint:scss'].invoke
 end

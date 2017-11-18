@@ -1,7 +1,8 @@
-.alert.alert-error, .alert.alert-alert {
-  @extend .alert-danger;
+.alert.alert-error,
+.alert.alert-alert {
+  @extend %alert-danger;
 }
 
 .alert.alert-notice {
-  @extend .alert-info;
+  @extend %alert-info;
 }
