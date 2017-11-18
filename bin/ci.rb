@@ -1,44 +1,19 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-# Run different build jobs and deal with the job results
-class Build
-  def initialize
-    @results = {}
-  end
+require_relative '../lib/ci/build'
 
-  def run_job(job_name, command)
-    puts heading("Running #{job_name}")
-    @results[job_name] = system(command)
-  end
-
-  def heading(text)
-    "\n\e[1;33m[Travis CI] #{text}\e[m\n"
-  end
-
-  def handle_results
-    failures = @results.reject { |_, value| value }
-    puts
-    if failures.empty?
-      puts 'Build finished successfully'
-      exit(true)
-    else
-      puts "Build FAILED because of #{failures.map(&:first).join(', ')}"
-      exit(false)
-    end
-  end
-end
-
-build = Build.new
+build = CI::Build.new
 
 if ENV['RUN'] == 'test'
-  build.run_job('test', 'bundle exec rake spec')
-  build.run_job('lint:haml', 'bundle exec rake lint:haml')
-  build.run_job('lint:rubocop', 'bundle exec rake lint:rubocop')
-  build.run_job('lint:bundle_audit', 'bundle exec rake lint:bundle_audit')
-  build.run_job('lint:brakeman', 'bundle exec rake lint:brakeman')
+  build.run_task('spec')
+  build.run_task('lint:haml')
+  build.run_task('lint:rubocop')
+  build.run_task('lint:bundle_audit')
+  build.run_task('lint:brakeman')
   system('PATH=$HOME/.local/bin:$PATH pip install --user yamllint')
-  build.run_job('lint:yaml', 'bundle exec rake lint:yaml')
+  build.run_task('lint:yaml')
+  build.run_task('lint:js')
 end
 
 build.handle_results

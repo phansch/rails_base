@@ -25,13 +25,18 @@ namespace :lint do
   task :yaml do |task|
     run_task('yamllint -c config/yamllint.yml .', task)
   end
+
+  desc 'Run javascript linting'
+  task :js do |task|
+    run_task('yarn run lint', task)
+  end
 end
 
 def run_task(command, task)
   puts
   puts "==> Invoking 'rake #{task}'"
   puts "  > Running '#{command}'"
-  exit(system(command))
+  system(command)
 end
 
 task :lint do
@@ -40,4 +45,5 @@ task :lint do
   Rake::Task['lint:bundle_audit'].invoke
   Rake::Task['lint:brakeman'].invoke
   Rake::Task['lint:yaml'].invoke
+  Rake::Task['lint:js'].invoke
 end
