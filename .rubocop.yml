@@ -33,6 +33,10 @@ Documentation:
     - spec/**/*
     - db/migrate/*
 
+Lint/HandleExceptions:
+  Exclude:
+    - spec/**/*_spec.rb
+
 Metrics/BlockLength:
   Exclude:
     - config/routes.rb
@@ -55,3 +59,12 @@ RSpec/DescribeClass:
 
 RSpec/ExampleLength:
   Max: 15
+
+RSpec/MessageSpies:
+  EnforcedStyle: receive
+
+RSpec/MultipleExpectations:
+  Max: 3
+
+RSpec/ExpectInHook:
+  Enabled: false
