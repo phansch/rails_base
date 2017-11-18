@@ -42,6 +42,7 @@ Metrics/BlockLength:
     - config/routes.rb
     - spec/**/*
     - Guardfile
+    - '**/*.rake'
 
 Metrics/MethodLength:
   Max: 15

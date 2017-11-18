@@ -5,6 +5,7 @@
     "@rails/webpacker": "^3.0.2",
     "coffeescript": "1.12.7",
     "eslint": "^4.11.0",
+    "sass-lint": "^1.12.1",
     "tinymce": "^4.7.1",
     "vue": "^2.5.3",
     "vue-loader": "^13.4.0",
@@ -16,6 +17,7 @@
     "webpack-dev-server": "^2.9.4"
   },
   "scripts": {
-    "lint": "eslint app/assets/"
+    "lint": "eslint app/assets/",
+    "sass-lint": "sass-lint -c config/sass-lint.yml -v -q --max-warnings 0"
   }
 }

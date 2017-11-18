@@ -14,6 +14,7 @@ if ENV['RUN'] == 'test'
   system('PATH=$HOME/.local/bin:$PATH pip install --user yamllint')
   build.run_task('lint:yaml')
   build.run_task('lint:js')
+  build.run_task('lint:scss')
 end
 
 build.handle_results

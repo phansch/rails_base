@@ -1,0 +1,7 @@
+---
+files:
+  include:
+    - 'app/assets/stylesheets/**/*.scss'
+rules:
+  force-element-nesting: 0
+  final-newline: 0
