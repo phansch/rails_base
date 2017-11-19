@@ -15,6 +15,7 @@ module CI # :nodoc:
       @results = {}
     end
 
+    # Runs the given rake task
     def run_task(task_name)
       puts heading("Running #{task_name}")
       @results[task_name] = Rake::Task[task_name].invoke

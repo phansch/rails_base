@@ -35,6 +35,11 @@ namespace :lint do
   task :scss do |task|
     run_task('yarn run sass-lint', task)
   end
+
+  desc 'Run cane check'
+  task :cane do |task|
+    run_task('bundle exec cane --no-style --no-doc --gte "coverage/.last_run.json,95"', task)
+  end
 end
 
 def run_task(command, task)
@@ -47,6 +52,7 @@ end
 task :lint do
   Rake::Task['lint:haml'].invoke
   Rake::Task['lint:rubocop'].invoke
+  Rake::Task['lint:cane'].invoke
   Rake::Task['lint:bundle_audit'].invoke
   Rake::Task['lint:brakeman'].invoke
   Rake::Task['lint:yaml'].invoke
