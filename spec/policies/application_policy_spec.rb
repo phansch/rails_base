@@ -4,26 +4,17 @@ require 'rails_helper'
 require 'pundit/rspec'
 
 RSpec.describe ApplicationPolicy do
-  subject { ApplicationPolicy.new(user, record) }
+  subject(:policy) { ApplicationPolicy.new(user, record) }
 
-  let(:record) { FactoryBot.build_stubbed(:some_model) }
+  let(:record) { nil }
 
-  xcontext 'for a visitor' do
+  context 'with a visitor' do
     let(:user) { nil }
 
-    it { is_expected.to forbid_action(:show) }
-    it { is_expected.to forbid_action(:index) }
-
-    it { is_expected.to forbid_action(:new) }
-    it { is_expected.to forbid_action(:create) }
-
-    it { is_expected.to forbid_action(:edit) }
-    it { is_expected.to forbid_action(:update) }
-
-    it { is_expected.to forbid_action(:destroy) }
+    it { expect { policy }.to raise_error(Pundit::NotAuthorizedError) }
   end
 
-  xcontext 'for a logged in user' do
+  context 'with a logged in user' do
     let(:user) { FactoryBot.create(:user) }
 
     it { is_expected.to forbid_action(:show) }
