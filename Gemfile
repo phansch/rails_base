@@ -32,6 +32,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 
 group :development, :test do
+  gem 'cane', require: false
   gem 'rspec-rails'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'pry-byebug', platforms: %i[mri mingw x64_mingw]
