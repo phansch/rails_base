@@ -27,3 +27,5 @@
 
 /config/database.yml
 /spec/examples.txt
+
+/coverage

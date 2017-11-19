@@ -1,5 +1,14 @@
 # frozen_string_literal: true
 
+require 'simplecov'
+SimpleCov.start 'rails' do
+  add_filter 'lib/tasks/lint.rake'
+  add_filter 'app/jobs/application_job.rb'
+  add_filter 'app/mailers/application_mailer.rb'
+  add_filter 'app/channels/application_cable/channel.rb'
+  add_filter 'app/channels/application_cable/connection.rb'
+end
+
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
@@ -19,7 +28,7 @@ RSpec.configure do |config|
 
   config.default_formatter = 'doc' if config.files_to_run.one?
 
-  config.profile_examples = 5
+  config.profile_examples = 3
 
   config.order = :random
 
