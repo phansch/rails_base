@@ -8,31 +8,7 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => 'reload'
     %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1, shrink-to-fit=no' }
   %body
-    .navbar.navbar-expand-lg.navbar-light.bg-light
-      %a.navbar-brand
-        = link_to t('project_title'), root_path, class: 'item'
-      %button.navbar-toggler{ type: :button, data: { toggle: :collapse, target: '#navbar-supported-content' }, aria: { controls: 'navbar-supported-content', expanded: false, label: 'Toggle Navigation' } }
-        %span.navbar-toggler-icon
-      .collapse.navbar-collapse#navbar-supported-content
-        %ul.navbar-nav.ml-auto
-          - if Rails.env.development?
-            %li.nav-item.dropdown
-              %a.nav-link.dropdown-toggle#navbar-dropdown-dev{ href: '#', role: :button, data: { toggle: :dropdown }, aria: { haspopup: true, expanded: false } }
-                Dev
-              .dropdown-menu{ aria: { labelledby: 'navbar-dropdown-dev' } }
-                = link_to 'Travis', t('nav.dev.ci.url'), class: 'dropdown-item'
-                = link_to 'Pull Requests', t('nav.dev.prs.url'), class: 'dropdown-item'
-          %li.nav-item.dropdown
-            - if current_user
-              %a.nav-link.dropdown-toggle#navbar-dropdown-user{ href: '#', role: :button, data: { toggle: :dropdown }, aria: { haspopup: true, expanded: false } }
-                = t('nav.my_account')
-              .dropdown-menu{ aria: { labelledby: 'navbar-dropdown-user' } }
-                = link_to t('nav.profile'), edit_user_registration_path, class: 'dropdown-item'
-                = link_to t('nav.logout'), destroy_user_session_path, class: 'dropdown-item', method: :delete
-            - else
-              %li.nav-item
-                = link_to t('nav.login'), new_user_session_path(current_user), class: 'nav-link'
-
+    = render partial: 'header'
     .container
       .row
         .col-sm
