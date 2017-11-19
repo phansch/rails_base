@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
-guard :rspec, cmd: 'bundle exec rspec' do
+ignore(/public/, /node_modules/)
+options = {
+  all_after_pass: false,
+  all_on_start: false,
+  failed_mode: :focus
+}
+guard :rspec, cmd: 'bundle exec rspec', **options do
   require 'guard/rspec/dsl'
   dsl = Guard::RSpec::Dsl.new(self)
 
